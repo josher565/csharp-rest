@@ -1,4 +1,4 @@
-namespace CSharpRest.Domain.Migrations
+namespace CSharpRest.Domain.ContextMigrations
 {
     using System;
     using System.Data.Entity;
@@ -10,6 +10,7 @@ namespace CSharpRest.Domain.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            MigrationsDirectory = @"ContextMigrations";
         }
 
         protected override void Seed(CSharpRest.Domain.DataAccess.AlbumAccess context)

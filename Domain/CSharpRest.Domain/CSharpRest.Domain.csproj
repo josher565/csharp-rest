@@ -49,18 +49,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContextMigrations\201712072054029_Initial.cs" />
+    <Compile Include="ContextMigrations\201712072054029_Initial.Designer.cs">
+      <DependentUpon>201712072054029_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ContextMigrations\Configuration.cs" />
     <Compile Include="DataAccess\AlbumAccess.cs" />
     <Compile Include="DataAccess\ArtistAccess.cs" />
     <Compile Include="DataAccess\SongAccess.cs" />
     <Compile Include="Data\Album.cs" />
     <Compile Include="Data\Artist.cs" />
     <Compile Include="Data\BaseModel.cs" />
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Data\Song.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ContextMigrations\201712072054029_Initial.resx">
+      <DependentUpon>201712072054029_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

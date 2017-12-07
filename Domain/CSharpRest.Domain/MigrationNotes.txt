@@ -1,0 +1,9 @@
+﻿http://www.dotnettricks.com/learn/entityframework/entity-framework-6-code-first-migrations-with-multiple-data-contexts
+
+
+Start with the AlbumAccess:
+enable-migrations -ContextTypeName CSharpRest.Domain.DataAccess.AlbumAccess -MigrationsDirectory:ContextMigrations
+
+add-migration -configuration CSharpRest.Domain.ContextMigrations.Configuration Initial
+
+update-database -configuration CSharpRest.Domain.ContextMigrations.Configuration -Verbose
