@@ -1,4 +1,4 @@
-namespace CSharpRest.Domain.Migrations.SongContextMigrations
+namespace CSharpRest.Domain.Migrations.DbMigration
 {
     using System;
     using System.Data.Entity.Migrations;
@@ -7,21 +7,6 @@ namespace CSharpRest.Domain.Migrations.SongContextMigrations
     {
         public override void Up()
         {
-            CreateTable(
-                "dbo.Songs",
-                c => new
-                    {
-                        Id = c.Long(nullable: false, identity: true),
-                        track = c.Int(nullable: false),
-                        name = c.String(),
-                        Created = c.DateTime(nullable: false),
-                        LastModified = c.DateTime(nullable: false),
-                        SongAlbum_Id = c.Long(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Albums", t => t.SongAlbum_Id)
-                .Index(t => t.SongAlbum_Id);
-            
             CreateTable(
                 "dbo.Albums",
                 c => new
@@ -48,17 +33,32 @@ namespace CSharpRest.Domain.Migrations.SongContextMigrations
                     })
                 .PrimaryKey(t => t.Id);
             
+            CreateTable(
+                "dbo.Songs",
+                c => new
+                    {
+                        Id = c.Long(nullable: false, identity: true),
+                        track = c.Int(nullable: false),
+                        name = c.String(),
+                        Created = c.DateTime(nullable: false),
+                        LastModified = c.DateTime(nullable: false),
+                        SongAlbum_Id = c.Long(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Albums", t => t.SongAlbum_Id)
+                .Index(t => t.SongAlbum_Id);
+            
         }
         
         public override void Down()
         {
             DropForeignKey("dbo.Songs", "SongAlbum_Id", "dbo.Albums");
             DropForeignKey("dbo.Albums", "AlbumArtist_Id", "dbo.Artists");
-            DropIndex("dbo.Albums", new[] { "AlbumArtist_Id" });
             DropIndex("dbo.Songs", new[] { "SongAlbum_Id" });
+            DropIndex("dbo.Albums", new[] { "AlbumArtist_Id" });
+            DropTable("dbo.Songs");
             DropTable("dbo.Artists");
             DropTable("dbo.Albums");
-            DropTable("dbo.Songs");
         }
     }
 }

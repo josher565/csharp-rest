@@ -55,11 +55,11 @@
     <Compile Include="Data\Album.cs" />
     <Compile Include="Data\Artist.cs" />
     <Compile Include="Data\BaseModel.cs" />
-    <Compile Include="Migrations\SongContextMigrations\201712082030153_Initial.cs" />
-    <Compile Include="Migrations\SongContextMigrations\201712082030153_Initial.Designer.cs">
-      <DependentUpon>201712082030153_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\DbMigration\201712082055399_Initial.cs" />
+    <Compile Include="Migrations\DbMigration\201712082055399_Initial.Designer.cs">
+      <DependentUpon>201712082055399_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\SongContextMigrations\Configuration.cs" />
+    <Compile Include="Migrations\DbMigration\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Data\Song.cs" />
   </ItemGroup>
@@ -70,8 +70,8 @@
     <Content Include="Migrations\MigrationNotes.txt" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\SongContextMigrations\201712082030153_Initial.resx">
-      <DependentUpon>201712082030153_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\DbMigration\201712082055399_Initial.resx">
+      <DependentUpon>201712082055399_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
