@@ -43,5 +43,5 @@ update-database -configuration CSharpRest.Domain.Migrations.SongContextMigration
 Add Sql Load
 ------------
 
-add-migration AlbumSqlLoad -configuration CSharpRest.Domain.Migrations.AlbumContextMigrations.Configuration 
+add-migration SqlLoad -configuration CSharpRest.Domain.Migrations.DbMigration.Configuration 
 
