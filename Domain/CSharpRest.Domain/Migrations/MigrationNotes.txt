@@ -31,8 +31,17 @@ add-migration -configuration CSharpRest.Domain.Migrations.SongContextMigrations.
 update-database -configuration CSharpRest.Domain.Migrations.SongContextMigrations.Configuration -Verbose
 
 
+Add some fields to Songs
+------------------------
 
 I added some fields to this model as I just stubbed it to begin with. Need a migration for this
 
 add-migration SongsWithFields -configuration CSharpRest.Domain.Migrations.SongContextMigrations.Configuration
 update-database -configuration CSharpRest.Domain.Migrations.SongContextMigrations.Configuration -Verbose
+
+
+Add Sql Load
+------------
+
+add-migration AlbumSqlLoad -configuration CSharpRest.Domain.Migrations.AlbumContextMigrations.Configuration 
+

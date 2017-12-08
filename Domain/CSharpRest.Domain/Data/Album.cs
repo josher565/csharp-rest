@@ -10,5 +10,8 @@ namespace CSharpRest.Domain.Data
     {
         public string name { get; set; }
         public int yearReleased { get; set; }
+
+        public virtual Artist AlbumArtist { get; set; }
+        public virtual ICollection<Song> AlbumSong { get; set; }
     }
 }

@@ -10,5 +10,7 @@ namespace CSharpRest.Domain.Data
     {
         public int track { get; set; }
         public string name { get; set; }
+
+        public virtual Album SongAlbum {get; set;}
     }
 }

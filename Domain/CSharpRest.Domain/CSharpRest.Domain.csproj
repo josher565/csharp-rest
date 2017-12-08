@@ -55,23 +55,9 @@
     <Compile Include="Data\Album.cs" />
     <Compile Include="Data\Artist.cs" />
     <Compile Include="Data\BaseModel.cs" />
-    <Compile Include="Migrations\AlbumContextMigrations\201712080111363_Initial.cs" />
-    <Compile Include="Migrations\AlbumContextMigrations\201712080111363_Initial.Designer.cs">
-      <DependentUpon>201712080111363_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\AlbumContextMigrations\Configuration.cs" />
-    <Compile Include="Migrations\ArtistContextMigrations\201712080109132_Initial.cs" />
-    <Compile Include="Migrations\ArtistContextMigrations\201712080109132_Initial.Designer.cs">
-      <DependentUpon>201712080109132_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\ArtistContextMigrations\Configuration.cs" />
-    <Compile Include="Migrations\SongContextMigrations\201712080101345_Initial.cs" />
-    <Compile Include="Migrations\SongContextMigrations\201712080101345_Initial.Designer.cs">
-      <DependentUpon>201712080101345_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\SongContextMigrations\201712080121320_SongsWithFields.cs" />
-    <Compile Include="Migrations\SongContextMigrations\201712080121320_SongsWithFields.Designer.cs">
-      <DependentUpon>201712080121320_SongsWithFields.cs</DependentUpon>
+    <Compile Include="Migrations\SongContextMigrations\201712082030153_Initial.cs" />
+    <Compile Include="Migrations\SongContextMigrations\201712082030153_Initial.Designer.cs">
+      <DependentUpon>201712082030153_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\SongContextMigrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -84,17 +70,8 @@
     <Content Include="Migrations\MigrationNotes.txt" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\AlbumContextMigrations\201712080111363_Initial.resx">
-      <DependentUpon>201712080111363_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\ArtistContextMigrations\201712080109132_Initial.resx">
-      <DependentUpon>201712080109132_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\SongContextMigrations\201712080101345_Initial.resx">
-      <DependentUpon>201712080101345_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\SongContextMigrations\201712080121320_SongsWithFields.resx">
-      <DependentUpon>201712080121320_SongsWithFields.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\SongContextMigrations\201712082030153_Initial.resx">
+      <DependentUpon>201712082030153_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
