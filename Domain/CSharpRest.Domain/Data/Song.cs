@@ -8,5 +8,7 @@ namespace CSharpRest.Domain.Data
 {
     public class Song : BaseModel
     {
+        public int track { get; set; }
+        public string name { get; set; }
     }
 }

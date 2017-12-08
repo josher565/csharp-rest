@@ -1,19 +1,19 @@
-namespace CSharpRest.Domain.ContextMigrations
+namespace CSharpRest.Domain.Migrations.ArtistContextMigrations
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<CSharpRest.Domain.DataAccess.AlbumAccess>
+    internal sealed class Configuration : DbMigrationsConfiguration<CSharpRest.Domain.DataAccess.ArtistAccess>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            MigrationsDirectory = @"ContextMigrations";
+            MigrationsDirectory = @"Migrations\ArtistContextMigrations";
         }
 
-        protected override void Seed(CSharpRest.Domain.DataAccess.AlbumAccess context)
+        protected override void Seed(CSharpRest.Domain.DataAccess.ArtistAccess context)
         {
             //  This method will be called after migrating to the latest version.
 

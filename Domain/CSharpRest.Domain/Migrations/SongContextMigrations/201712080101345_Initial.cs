@@ -1,4 +1,4 @@
-namespace CSharpRest.Domain.ContextMigrations
+namespace CSharpRest.Domain.Migrations.SongContextMigrations
 {
     using System;
     using System.Data.Entity.Migrations;
@@ -8,12 +8,10 @@ namespace CSharpRest.Domain.ContextMigrations
         public override void Up()
         {
             CreateTable(
-                "dbo.Albums",
+                "dbo.Songs",
                 c => new
                     {
                         Id = c.Long(nullable: false, identity: true),
-                        name = c.String(),
-                        yearReleased = c.Int(nullable: false),
                         Created = c.DateTime(nullable: false),
                         LastModified = c.DateTime(nullable: false),
                     })
@@ -23,7 +21,7 @@ namespace CSharpRest.Domain.ContextMigrations
         
         public override void Down()
         {
-            DropTable("dbo.Albums");
+            DropTable("dbo.Songs");
         }
     }
 }
