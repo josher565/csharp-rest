@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CSharpRest.Domain.Contexts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -9,15 +10,18 @@ namespace CSharpRest.Controllers
 {
     public class AlbumController : ApiController
     {
-        // GET: api/Album
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
+        public AlbumController() : this(new AlbumContext()) { }
+
+        public AlbumController(AlbumContext albumAccess) {
+            AlbumGopher = albumAccess;
         }
 
+        public AlbumContext AlbumGopher { get; set; }
+ 
         // GET: api/Album/5
         public string Get(int id)
         {
+           // AlbumGopher.Albums
             return "value";
         }
 

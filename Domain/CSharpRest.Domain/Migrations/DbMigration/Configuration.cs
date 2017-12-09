@@ -5,7 +5,7 @@ namespace CSharpRest.Domain.Migrations.DbMigration
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<CSharpRest.Domain.DataAccess.AlbumAccess>
+    internal sealed class Configuration : DbMigrationsConfiguration<CSharpRest.Domain.Contexts.AlbumContext>
     {
         public Configuration()
         {
@@ -13,7 +13,7 @@ namespace CSharpRest.Domain.Migrations.DbMigration
             MigrationsDirectory = @"Migrations\DbMigration";
         }
 
-        protected override void Seed(CSharpRest.Domain.DataAccess.AlbumAccess context)
+        protected override void Seed(CSharpRest.Domain.Contexts.AlbumContext context)
         {
 
         }

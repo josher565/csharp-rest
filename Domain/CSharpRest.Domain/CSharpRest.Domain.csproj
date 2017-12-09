@@ -49,9 +49,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataAccess\AlbumAccess.cs" />
-    <Compile Include="DataAccess\ArtistAccess.cs" />
-    <Compile Include="DataAccess\SongAccess.cs" />
+    <Compile Include="Access\AlbumAccess.cs" />
+    <Compile Include="Access\ArtistAccess.cs" />
+    <Compile Include="Access\SongAccess.cs" />
+    <Compile Include="Context\AlbumContext.cs" />
+    <Compile Include="Context\ArtistContext.cs" />
+    <Compile Include="Access\ICrud.cs" />
+    <Compile Include="Context\SongContext.cs" />
     <Compile Include="Data\Album.cs" />
     <Compile Include="Data\Artist.cs" />
     <Compile Include="Data\BaseModel.cs" />
