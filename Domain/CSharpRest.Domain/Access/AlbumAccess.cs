@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CSharpRest.Domain.Data;
+using System.Data.Entity;
 
 namespace CSharpRest.Domain.Access
 {
@@ -12,12 +13,20 @@ namespace CSharpRest.Domain.Access
 
         public void Create(Album entity)
         {
-            throw new NotImplementedException();
+            using (var ctx = new Contexts.AlbumContext())
+            {
+                ctx.Albums.Add(entity);
+                ctx.SaveChanges();
+            }
         }
 
         public void Delete(Album entity)
         {
-            throw new NotImplementedException();
+            using (var ctx = new Contexts.AlbumContext())
+            {
+                ctx.Entry(entity).State = System.Data.Entity.EntityState.Deleted;
+                ctx.SaveChanges();
+            }
         }
 
         public Album Read(int id)
@@ -32,7 +41,12 @@ namespace CSharpRest.Domain.Access
 
         public void Update(Album entity)
         {
-            throw new NotImplementedException();
+            using (var ctx = new Contexts.AlbumContext())
+            {
+                ctx.Albums.Attach(entity);
+                ctx.Entry(entity).State = EntityState.Modified;
+                ctx.SaveChanges();
+            }
         }
     }
 }

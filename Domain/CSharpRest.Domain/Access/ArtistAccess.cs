@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CSharpRest.Domain.Data;
+using System.Data.Entity;
 
 namespace CSharpRest.Domain.Access
 {
@@ -11,22 +12,40 @@ namespace CSharpRest.Domain.Access
     {
         public void Create(Artist entity)
         {
-            throw new NotImplementedException();
+            using (var ctx = new Contexts.ArtistContext())
+            {
+                ctx.Artists.Add(entity);
+                ctx.SaveChanges();
+            }
         }
 
         public void Delete(Artist entity)
         {
-            throw new NotImplementedException();
+            using (var ctx = new Contexts.ArtistContext())
+            {
+                ctx.Entry(entity).State = System.Data.Entity.EntityState.Deleted;
+                ctx.SaveChanges();
+            }
         }
 
         public Artist Read(int id)
         {
-            throw new NotImplementedException();
+            Artist rArtist = null;
+            using (var ctx = new Contexts.ArtistContext())
+            {
+                rArtist = ctx.Artists.Find(id);
+            }
+            return rArtist;
         }
 
         public void Update(Artist entity)
         {
-            throw new NotImplementedException();
+            using (var ctx = new Contexts.ArtistContext())
+            {
+                ctx.Artists.Attach(entity);
+                ctx.Entry(entity).State = EntityState.Modified;
+                ctx.SaveChanges();
+            }
         }
     }
 }

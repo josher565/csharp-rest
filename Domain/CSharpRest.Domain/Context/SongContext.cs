@@ -9,30 +9,12 @@ using CSharpRest.Domain.Access;
 
 namespace CSharpRest.Domain.Contexts
 {
-    public class SongContext : DbContext, ICrud<Data.Song>
+    public class SongContext : DbContext
     {
         public SongContext() : base("MusicDb") {}
 
         public virtual DbSet<Data.Song> Songs { get; set; }
 
-        public void Create(Song entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(Song entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Song Read(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(Song entity)
-        {
-            throw new NotImplementedException();
-        }
+   
     }
 }
