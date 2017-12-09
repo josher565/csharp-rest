@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CSharpRest.Domain.Access;
+using CSharpRest.Domain.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -9,31 +11,33 @@ namespace CSharpRest.Controllers
 {
     public class ArtistController : ApiController
     {
-        // GET api/values
-        public IEnumerable<string> Get()
+        public ArtistController() : this(new ArtistAccess()) { }
+
+        public ArtistController(ArtistAccess access)
         {
-            return new string[] { "value1", "value2" };
+            ArtistGopher = access;
         }
 
-        // GET api/values/5
-        public string Get(int id)
+        public ArtistAccess ArtistGopher { get; set; }
+
+        public Artist Get(int id)
         {
-            return "value";
+            return ArtistGopher.Read(id);
         }
 
-        // POST api/values
-        public void Post([FromBody]string value)
+        public void Post(Artist artist)
         {
+            ArtistGopher.Create(artist);
         }
 
-        // PUT api/values/5
-        public void Put(int id, [FromBody]string value)
+        public void Put(Artist artist)
         {
+            ArtistGopher.Update(artist);
         }
 
-        // DELETE api/values/5
-        public void Delete(int id)
+        public void Delete(Artist artist)
         {
+            ArtistGopher.Delete(artist);
         }
     }
 }

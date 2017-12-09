@@ -1,4 +1,6 @@
-﻿using CSharpRest.Domain.Contexts;
+﻿using CSharpRest.Domain.Access;
+using CSharpRest.Domain.Contexts;
+using CSharpRest.Domain.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,34 +12,36 @@ namespace CSharpRest.Controllers
 {
     public class AlbumController : ApiController
     {
-        public AlbumController() : this(new AlbumContext()) { }
+        public AlbumController() : this(new AlbumAccess()) { }
 
-        public AlbumController(AlbumContext albumAccess) {
+        public AlbumController(AlbumAccess albumAccess) {
             AlbumGopher = albumAccess;
         }
 
-        public AlbumContext AlbumGopher { get; set; }
+        public AlbumAccess AlbumGopher { get; set; }
  
-        // GET: api/Album/5
-        public string Get(int id)
+       
+        public Album Get(int id)
         {
-           // AlbumGopher.Albums
-            return "value";
+            return AlbumGopher.Read(id);
         }
 
-        // POST: api/Album
-        public void Post([FromBody]string value)
+      
+        public void Post(Album album)
         {
+            AlbumGopher.Create(album);
         }
 
-        // PUT: api/Album/5
-        public void Put(int id, [FromBody]string value)
+    
+        public void Put(Album album)
         {
+            AlbumGopher.Update(album);
         }
 
-        // DELETE: api/Album/5
-        public void Delete(int id)
+   
+        public void Delete(Album album)
         {
+            AlbumGopher.Delete(album);
         }
     }
 }
