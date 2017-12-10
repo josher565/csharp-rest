@@ -19,30 +19,29 @@ namespace CSharpRest.Domain.Access
 
         public Data.Album Create(Album entity)
         {
-            Data.Album rAlbum = null;
-            using (var ctx = new Contexts.AlbumContext())
+            using (Context)
             {
-                rAlbum = ctx.Albums.Add(entity);
-                ctx.SaveChanges();
+                Context.Albums.Add(entity);
+                Context.SaveChanges();
             }
-            return rAlbum;
+            return entity;
         }
 
         public void Delete(Album entity)
         {
-            using (var ctx = new Contexts.AlbumContext())
+            using (Context)
             {
-                ctx.Entry(entity).State = System.Data.Entity.EntityState.Deleted;
-                ctx.SaveChanges();
+                Context.Entry(entity).State = System.Data.Entity.EntityState.Deleted;
+                Context.SaveChanges();
             }
         }
 
         public Album Read(int id)
         {
             Album rAlbum = null;
-            using(var ctx = new Contexts.AlbumContext())
+            using(Context)
             {
-                rAlbum = ctx.Albums.Find(id);
+                rAlbum = Context.Albums.Find(id);
             }
             return rAlbum;
         }
@@ -50,11 +49,11 @@ namespace CSharpRest.Domain.Access
         public Data.Album Update(Album entity)
         {
             Album rAlbum = null;
-            using (var ctx = new Contexts.AlbumContext())
+            using (Context)
             {
-                rAlbum = ctx.Albums.Attach(entity);
-                ctx.Entry(entity).State = EntityState.Modified;
-                ctx.SaveChanges();
+                rAlbum = Context.Albums.Attach(entity);
+                Context.Entry(entity).State = EntityState.Modified;
+                Context.SaveChanges();
             }
             return rAlbum;
         }
