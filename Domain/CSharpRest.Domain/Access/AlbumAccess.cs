@@ -10,14 +10,22 @@ namespace CSharpRest.Domain.Access
 {
     public class AlbumAccess : ICrud<Data.Album>
     {
-
-        public void Create(Album entity)
+        public AlbumAccess(Contexts.AlbumContext context)
         {
+            Context = context;
+        }
+
+        public Contexts.AlbumContext Context { get; set; }
+
+        public Data.Album Create(Album entity)
+        {
+            Data.Album rAlbum = null;
             using (var ctx = new Contexts.AlbumContext())
             {
-                ctx.Albums.Add(entity);
+                rAlbum = ctx.Albums.Add(entity);
                 ctx.SaveChanges();
             }
+            return rAlbum;
         }
 
         public void Delete(Album entity)
@@ -39,14 +47,16 @@ namespace CSharpRest.Domain.Access
             return rAlbum;
         }
 
-        public void Update(Album entity)
+        public Data.Album Update(Album entity)
         {
+            Album rAlbum = null;
             using (var ctx = new Contexts.AlbumContext())
             {
-                ctx.Albums.Attach(entity);
+                rAlbum = ctx.Albums.Attach(entity);
                 ctx.Entry(entity).State = EntityState.Modified;
                 ctx.SaveChanges();
             }
+            return rAlbum;
         }
     }
 }

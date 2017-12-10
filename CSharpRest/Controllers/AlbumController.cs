@@ -12,7 +12,7 @@ namespace CSharpRest.Controllers
 {
     public class AlbumController : ApiController
     {
-        public AlbumController() : this(new AlbumAccess()) { }
+        public AlbumController() : this(new AlbumAccess(new AlbumContext())) { }
 
         public AlbumController(AlbumAccess albumAccess) {
             AlbumGopher = albumAccess;

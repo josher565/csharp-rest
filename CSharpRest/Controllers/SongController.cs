@@ -11,7 +11,7 @@ namespace CSharpRest.Controllers
 {
     public class SongController : ApiController
     {
-        public SongController() : this(new SongAccess()) { }
+        public SongController() : this(new SongAccess(new Domain.Contexts.SongContext())) { }
 
         public SongController(SongAccess access)
         {

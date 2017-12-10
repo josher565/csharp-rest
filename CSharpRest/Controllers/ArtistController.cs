@@ -11,7 +11,7 @@ namespace CSharpRest.Controllers
 {
     public class ArtistController : ApiController
     {
-        public ArtistController() : this(new ArtistAccess()) { }
+        public ArtistController() : this(new ArtistAccess(new Domain.Contexts.ArtistContext())) { }
 
         public ArtistController(ArtistAccess access)
         {

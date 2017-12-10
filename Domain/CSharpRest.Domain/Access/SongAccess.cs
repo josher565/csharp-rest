@@ -10,13 +10,22 @@ namespace CSharpRest.Domain.Access
 {
     public class SongAccess : ICrud<Data.Song>
     {
-        public void Create(Song entity)
+        public SongAccess(Contexts.SongContext context)
         {
+            Context = context;
+        }
+
+        public Contexts.SongContext Context { get; set; }
+
+        public Song Create(Song entity)
+        {
+            Song rSong = null;
             using (var ctx = new Contexts.SongContext())
             {
-                ctx.Songs.Add(entity);
+                rSong = ctx.Songs.Add(entity);
                 ctx.SaveChanges();
             }
+            return rSong;
         }
 
         public void Delete(Song entity)
@@ -38,14 +47,16 @@ namespace CSharpRest.Domain.Access
             return rSong;
         }
 
-        public void Update(Song entity)
+        public Song Update(Song entity)
         {
+            Song rSong = null;
             using (var ctx = new Contexts.SongContext())
             {
-                ctx.Songs.Attach(entity);
+                rSong = ctx.Songs.Attach(entity);
                 ctx.Entry(entity).State = EntityState.Modified;
                 ctx.SaveChanges();
             }
+            return rSong;
         }
     }
 }

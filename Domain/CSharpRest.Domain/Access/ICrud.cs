@@ -8,11 +8,11 @@ namespace CSharpRest.Domain.Access
 {
     interface ICrud<T>
     {
-        void Create(T entity);
+        T Create(T entity);
 
         T Read(int id);
 
-        void Update(T entity);
+        T Update(T entity);
 
         void Delete(T entity);
     }

@@ -15,7 +15,7 @@ namespace CSharpRest.Domain.Contexts
 
         public virtual DbSet<Data.Artist> Artists {get; set;}
 
-        public void Create(Artist entity)
+        public Data.Artist Create(Artist entity)
         {
             throw new NotImplementedException();
         }
@@ -30,7 +30,7 @@ namespace CSharpRest.Domain.Contexts
             throw new NotImplementedException();
         }
 
-        public void Update(Artist entity)
+        public Data.Artist Update(Artist entity)
         {
             throw new NotImplementedException();
         }

@@ -10,13 +10,22 @@ namespace CSharpRest.Domain.Access
 {
     public class ArtistAccess : ICrud<Data.Artist>
     {
-        public void Create(Artist entity)
+        public ArtistAccess(Contexts.ArtistContext context)
         {
+            Context = context;
+        }
+
+        public Contexts.ArtistContext Context { get; set; }
+
+        public Data.Artist Create(Artist entity)
+        {
+            Artist rArtist = null;
             using (var ctx = new Contexts.ArtistContext())
             {
-                ctx.Artists.Add(entity);
+                rArtist = ctx.Artists.Add(entity);
                 ctx.SaveChanges();
             }
+            return rArtist;
         }
 
         public void Delete(Artist entity)
@@ -38,14 +47,16 @@ namespace CSharpRest.Domain.Access
             return rArtist;
         }
 
-        public void Update(Artist entity)
+        public Data.Artist Update(Artist entity)
         {
+            Artist rArtist = null;
             using (var ctx = new Contexts.ArtistContext())
             {
-                ctx.Artists.Attach(entity);
+                rArtist = ctx.Artists.Attach(entity);
                 ctx.Entry(entity).State = EntityState.Modified;
                 ctx.SaveChanges();
             }
+            return rArtist;
         }
     }
 }
