@@ -31,7 +31,8 @@ namespace CSharpRest.Domain.Access
         {
             using (Context)
             {
-                Context.Entry(entity).State = System.Data.Entity.EntityState.Deleted;
+                //Context.Entry(entity).State = System.Data.Entity.EntityState.Deleted;
+                Context.SetObjectState(entity, EntityState.Deleted);
                 Context.SaveChanges();
             }
         }
@@ -52,7 +53,8 @@ namespace CSharpRest.Domain.Access
             using (Context)
             {
                 rAlbum = Context.Albums.Attach(entity);
-                Context.Entry(entity).State = EntityState.Modified;
+                //Context.Entry(entity).State = EntityState.Modified;
+                Context.SetObjectState(entity, EntityState.Modified);
                 Context.SaveChanges();
             }
             return rAlbum;

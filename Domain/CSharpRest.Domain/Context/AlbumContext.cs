@@ -12,11 +12,13 @@ namespace CSharpRest.Domain.Contexts
 {
     public class AlbumContext : DbContext
     {
-        public AlbumContext() : base("MusicDb") {
-              
-        }
+        public AlbumContext() : base("MusicDb") { }
 
         public virtual DbSet<Data.Album> Albums { get; set; }
 
+        public virtual void SetObjectState(Album entity, EntityState state)
+        {
+            Entry(entity).State = state;
+        }
     }
 }
