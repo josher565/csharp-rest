@@ -45,3 +45,6 @@ Add Sql Load
 
 add-migration SqlLoad -configuration CSharpRest.Domain.Migrations.DbMigration.Configuration 
 
+update-database -configuration CSharpRest.Domain.Migrations.DbMigration.Configuration -Verbose
+
+add-migration FinishUp -configuration CSharpRest.Domain.Migrations.DbMigration.Configuration 

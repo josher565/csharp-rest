@@ -1,6 +1,8 @@
-﻿using CSharpRest.Domain.Access;
+﻿using AutoMapper;
+using CSharpRest.Domain.Access;
 using CSharpRest.Domain.Contexts;
 using CSharpRest.Domain.Data;
+using CSharpRest.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,27 +23,32 @@ namespace CSharpRest.Controllers
         public AlbumAccess AlbumGopher { get; set; }
  
        
-        public Album Get(int id)
+        public AlbumModel Get(int id)
         {
-            return AlbumGopher.Read(id);
+            var r = AlbumGopher.Read(id);
+            var model = Mapper.Map<AlbumModel>(r);
+            return model;
         }
 
       
-        public void Post(Album album)
+        public void Post(AlbumModel album)
         {
-            AlbumGopher.Create(album);
+            var db = Mapper.Map<Album>(album);
+            AlbumGopher.Create(db);
         }
 
     
-        public void Put(Album album)
+        public void Put(AlbumModel album)
         {
-            AlbumGopher.Update(album);
+            var db = Mapper.Map<Album>(album);
+            AlbumGopher.Update(db);
         }
 
    
-        public void Delete(Album album)
+        public void Delete(AlbumModel album)
         {
-            AlbumGopher.Delete(album);
+            var db = Mapper.Map<Album>(album);
+            AlbumGopher.Delete(db);
         }
     }
 }
