@@ -31,7 +31,6 @@ namespace CSharpRest.Domain.Access
         {
             using (Context)
             {
-                //Context.Entry(entity).State = System.Data.Entity.EntityState.Deleted;
                 Context.SetObjectState(entity, EntityState.Deleted);
                 Context.SaveChanges();
             }

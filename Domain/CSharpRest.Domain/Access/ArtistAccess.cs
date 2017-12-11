@@ -20,29 +20,29 @@ namespace CSharpRest.Domain.Access
         public Data.Artist Create(Artist entity)
         {
             Artist rArtist = null;
-            using (var ctx = new Contexts.ArtistContext())
+            using (Context)
             {
-                rArtist = ctx.Artists.Add(entity);
-                ctx.SaveChanges();
+                rArtist = Context.Artists.Add(entity);
+                Context.SaveChanges();
             }
             return rArtist;
         }
 
         public void Delete(Artist entity)
         {
-            using (var ctx = new Contexts.ArtistContext())
+            using (Context)
             {
-                ctx.Entry(entity).State = System.Data.Entity.EntityState.Deleted;
-                ctx.SaveChanges();
+                Context.SetObjectState(entity, EntityState.Deleted);
+                Context.SaveChanges();
             }
         }
 
         public Artist Read(int id)
         {
             Artist rArtist = null;
-            using (var ctx = new Contexts.ArtistContext())
+            using (Context)
             {
-                rArtist = ctx.Artists.Find(id);
+                rArtist = Context.Artists.Find(id);
             }
             return rArtist;
         }
@@ -53,7 +53,7 @@ namespace CSharpRest.Domain.Access
             using (var ctx = new Contexts.ArtistContext())
             {
                 rArtist = ctx.Artists.Attach(entity);
-                ctx.Entry(entity).State = EntityState.Modified;
+                Context.SetObjectState(entity, EntityState.Modified);
                 ctx.SaveChanges();
             }
             return rArtist;

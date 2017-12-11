@@ -6,9 +6,9 @@ namespace CSharpRest.Test.Domain
     [TestClass]
     public class SongAccessTest
     {
-        [TestMethod]
-        public void TestMethod1()
-        {
-        }
+        //[TestMethod]
+        //public void TestMethod1()
+        //{
+        //}
     }
 }
