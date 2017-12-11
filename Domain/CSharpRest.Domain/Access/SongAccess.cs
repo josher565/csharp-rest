@@ -20,29 +20,29 @@ namespace CSharpRest.Domain.Access
         public Song Create(Song entity)
         {
             Song rSong = null;
-            using (var ctx = new Contexts.SongContext())
+            using (Context)
             {
-                rSong = ctx.Songs.Add(entity);
-                ctx.SaveChanges();
+                rSong = Context.Songs.Add(entity);
+                Context.SaveChanges();
             }
             return rSong;
         }
 
         public void Delete(Song entity)
         {
-            using (var ctx = new Contexts.SongContext())
+            using (Context)
             {
-                ctx.Entry(entity).State = System.Data.Entity.EntityState.Deleted;
-                ctx.SaveChanges();
+                Context.Entry(entity).State = System.Data.Entity.EntityState.Deleted;
+                Context.SaveChanges();
             }
         }
 
         public Song Read(int id)
         {
             Song rSong = null;
-            using (var ctx = new Contexts.SongContext())
+            using (Context)
             {
-                rSong = ctx.Songs.Find(id);
+                rSong = Context.Songs.Find(id);
             }
             return rSong;
         }
@@ -50,11 +50,11 @@ namespace CSharpRest.Domain.Access
         public Song Update(Song entity)
         {
             Song rSong = null;
-            using (var ctx = new Contexts.SongContext())
+            using (Context)
             {
-                rSong = ctx.Songs.Attach(entity);
-                ctx.Entry(entity).State = EntityState.Modified;
-                ctx.SaveChanges();
+                rSong = Context.Songs.Attach(entity);
+                Context.Entry(entity).State = EntityState.Modified;
+                Context.SaveChanges();
             }
             return rSong;
         }

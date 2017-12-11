@@ -1,5 +1,10 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using CSharpRest.Domain.Data;
+using System.Data.Entity;
+using Moq;
+using CSharpRest.Domain.Contexts;
+using CSharpRest.Domain.Access;
 
 namespace CSharpRest.Test.Domain
 {
@@ -17,7 +22,7 @@ namespace CSharpRest.Test.Domain
             mockSet.Setup(m => m.Find(It.IsAny<object[]>())).Returns(artist);
 
             var context = new Mock<ArtistContext>();
-            context.SetupGet(m => m.Albums).Returns(mockSet.Object);
+            context.SetupGet(m => m.Artists).Returns(mockSet.Object);
 
             var sut = new ArtistAccess(context.Object);
 
@@ -34,16 +39,16 @@ namespace CSharpRest.Test.Domain
             //Arrange
             var mockSet = new Mock<DbSet<Artist>>();
             var context = new Mock<ArtistContext>();
-            context.SetupGet(m => m.Albums).Returns(mockSet.Object);
+            context.SetupGet(m => m.Artists).Returns(mockSet.Object);
 
             var sut = new ArtistAccess(context.Object);
             var sutArtist = new Artist() { Id = 14 };
 
             //Act
-            var rAlbum = sut.Create(sutArtist);
+            var rArtist = sut.Create(sutArtist);
 
             //Assert
-            mockSet.Verify(m => m.Add(sutAlbum), Times.Once());
+            mockSet.Verify(m => m.Add(sutArtist), Times.Once());
         }
 
         [TestMethod]
@@ -54,9 +59,9 @@ namespace CSharpRest.Test.Domain
             var context = new Mock<ArtistContext>();
             var artist = new Artist() { Id = 14 };
 
-            context.SetupGet(m => m.Albums).Returns(mockSet.Object);
-            context.Setup(m => m.SetObjectState(album, EntityState.Modified));
-            mockSet.Setup(m => m.Attach(album)).Returns(artist);
+            context.SetupGet(m => m.Artists).Returns(mockSet.Object);
+            context.Setup(m => m.SetObjectState(artist, EntityState.Modified));
+            mockSet.Setup(m => m.Attach(artist)).Returns(artist);
 
             //Act
             var sut = new ArtistAccess(context.Object);
@@ -64,7 +69,6 @@ namespace CSharpRest.Test.Domain
 
             //Assert
             Assert.AreEqual(artist, mockSet.Object.Attach(artist));
-            context.Verify(m => m.SaveChanges(), Times.Once());
         }
 
         [TestMethod]
@@ -74,9 +78,9 @@ namespace CSharpRest.Test.Domain
             var mockSet = new Mock<DbSet<Artist>>();
             var context = new Mock<ArtistContext>();
             var artist = new Artist();
-            context.SetupGet(m => m.Albums).Returns(mockSet.Object);
-            context.Setup(m => m.SetObjectState(album, EntityState.Deleted));
-            mockSet.Setup(m => m.Remove(album)).Returns(album);
+            context.SetupGet(m => m.Artists).Returns(mockSet.Object);
+            context.Setup(m => m.SetObjectState(artist, EntityState.Deleted));
+            mockSet.Setup(m => m.Remove(artist)).Returns(artist);
 
             //Act
             var sut = new ArtistAccess(context.Object);
@@ -84,7 +88,7 @@ namespace CSharpRest.Test.Domain
 
             //Assert
             Assert.AreEqual(artist, mockSet.Object.Remove(artist));
-            mockSet.Verify(m => m.Remove(Artist), Times.Once());
+            mockSet.Verify(m => m.Remove(artist), Times.Once());
         }
 
     }

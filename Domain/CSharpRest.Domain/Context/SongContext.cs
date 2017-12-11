@@ -15,6 +15,9 @@ namespace CSharpRest.Domain.Contexts
 
         public virtual DbSet<Data.Song> Songs { get; set; }
 
-   
+        public virtual void SetObjectState(Data.Song entity, EntityState state)
+        {
+            Entry(entity).State = state;
+        }
     }
 }
