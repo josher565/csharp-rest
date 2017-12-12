@@ -58,13 +58,8 @@
     <Compile Include="Context\SongContext.cs" />
     <Compile Include="Data\Album.cs" />
     <Compile Include="Data\Artist.cs" />
+    <Compile Include="Data\artist_albums.cs" />
     <Compile Include="Data\BaseModel.cs" />
-    <Compile Include="Migrations\Setup\201712112107416_SetupAlbumMigration.cs" />
-    <Compile Include="Migrations\Setup\201712112107416_SetupAlbumMigration.Designer.cs">
-      <DependentUpon>201712112107416_SetupAlbumMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Setup\AlbumConfiguration.cs" />
-    <Compile Include="Migrations\Setup\SongConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Data\Song.cs" />
   </ItemGroup>
@@ -73,11 +68,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Migrations\MigrationNotes.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\Setup\201712112107416_SetupAlbumMigration.resx">
-      <DependentUpon>201712112107416_SetupAlbumMigration.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

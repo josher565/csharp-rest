@@ -13,7 +13,7 @@ namespace CSharpRest.Domain.Data
 
         public int yearReleased { get; set; }
 
-        public virtual Artist AlbumArtist { get; set; }
+        public virtual artist_albums ArtistAlbums{ get; set; }
 
    
     }

@@ -29,13 +29,13 @@ namespace CSharpRest.Controllers
         // POST: api/Song
         public void Post(Song song)
         {
-            SongGopher.Create(song);
+            SongGopher.Create(song, DateTime.Now);
         }
 
         // PUT: api/Song/5
         public void Put(Song song)
         {
-            SongGopher.Update(song);
+            SongGopher.Update(song, DateTime.Now);
         }
 
         // DELETE: api/Song/5

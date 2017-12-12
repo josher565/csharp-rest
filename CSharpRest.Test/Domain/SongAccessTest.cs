@@ -37,6 +37,7 @@ namespace CSharpRest.Test.Domain
         public void SongAccessCreateTest()
         {
             //Arrange
+            var now = DateTime.Now;
             var mockSet = new Mock<DbSet<Song>>();
             var context = new Mock<SongContext>();
             context.SetupGet(m => m.Songs).Returns(mockSet.Object);
@@ -45,7 +46,7 @@ namespace CSharpRest.Test.Domain
             var sutSong = new Song() { Id = 14 };
 
             //Act
-            var rArtist = sut.Create(sutSong);
+            var rArtist = sut.Create(sutSong, now);
 
             //Assert
             mockSet.Verify(m => m.Add(sutSong), Times.Once());
@@ -55,6 +56,7 @@ namespace CSharpRest.Test.Domain
         public void SongAccessUpdateTest()
         {
             //Arrange
+            var now = DateTime.Now;
             var mockSet = new Mock<DbSet<Artist>>();
             var context = new Mock<ArtistContext>();
             var artist = new Artist() { Id = 14 };
@@ -65,7 +67,7 @@ namespace CSharpRest.Test.Domain
 
             //Act
             var sut = new ArtistAccess(context.Object);
-            sut.Update(artist);
+            sut.Update(artist,now);
 
             //Assert
             Assert.AreEqual(artist, mockSet.Object.Attach(artist));

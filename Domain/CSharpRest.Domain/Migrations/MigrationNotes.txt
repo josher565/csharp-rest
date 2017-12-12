@@ -53,26 +53,25 @@ add-migration FinishUp -configuration CSharpRest.Domain.Migrations.DbMigration.C
 
 Redo
 ----
-ref: https://stackoverflow.com/questions/13469881/how-do-i-enable-ef-migrations-for-multiple-contexts-to-separate-databases
+ref: 
+https://stackoverflow.com/questions/13469881/how-do-i-enable-ef-migrations-for-multiple-contexts-to-separate-databases
+http://www.dotnettricks.com/learn/entityframework/entity-framework-6-code-first-migrations-with-multiple-data-contexts
+https://msdn.microsoft.com/en-us/magazine/dn948104.aspx
+
 
 SETUP
-enable-migrations -ContextTypeName CSharpRest.Domain.Contexts.AlbumContext -MigrationsDirectory:Migrations\Setup
-rename the Configuration file AlbumConfiguration
+enable-migrations -ContextTypeName CSharpRest.Domain.Contexts.AlbumContext -MigrationsDirectory:Migrations\AlbumSetup
+add-migration SetupAlbum -configuration CSharpRest.Domain.Migrations.AlbumSetup.Configuration -Verbose
+update-database -configuration CSharpRest.Domain.Migrations.AlbumSetup.Configuration -Verbose
 
-enable-migrations -ContextTypeName CSharpRest.Domain.Contexts.SongContext -MigrationsDirectory:Migrations\Setup
-rename the Configuration file SongConfiguration
+enable-migrations -ContextTypeName CSharpRest.Domain.Contexts.SongContext -MigrationsDirectory:Migrations\ArtistSetup
+add-migration SetupArtist -configuration CSharpRest.Domain.Migrations.ArtistSetup.Configuration -Verbose
+NOTE: comment out album stuff here.
+update-database -configuration CSharpRest.Domain.Migrations.ArtistSetup.Configuration
 
-
-CREATE THE MIGRATION CODE
-add-migration SetupAlbumMigration -configuration CSharpRest.Domain.Migrations.Setup.AlbumConfiguration -Verbose
-add Up method specific to the Artist & Album info 
-
--- IM RIGHT HERE --
-
-update-database -configuration CSharpRest.Domain.Migrations.Setup.AlbumConfiguration -Verbose
-
-add-migration SetupSongMigration -configuration CSharpRest.Domain.Migrations.Setup.SongConfiguration -Verbose
-add Up method specific to the Song info
+enable-migrations -ContextTypeName CSharpRest.Domain.Contexts.SongContext -MigrationsDirectory:Migrations\SongSetup
+add-migration SetupSong -configuration CSharpRest.Domain.Migrations.SongSetup.Configuration -Verbose
+update-database -configuration CSharpRest.Domain.Migrations.SongSetup.Configuration -Verbose
 
 
 
@@ -80,8 +79,8 @@ add Up method specific to the Song info
 
 
 
-
-
+REFERENCE FOR DELETING PENDING MIGRATION FILE & SOLVING MIGRATION ERROR
+https://stackoverflow.com/questions/9817860/unable-to-generate-an-explicit-migration-in-entity-framework
 
 
 

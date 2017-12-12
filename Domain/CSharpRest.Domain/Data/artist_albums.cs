@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace CSharpRest.Domain.Data
 {
-    public class Artist : BaseModel
+    public class artist_albums
     {
-        public string name { get; set; }
-
-        public virtual artist_albums ArtistAlbums { get; set; }
+        public Artist Artist { get; set; }
+        public Album Album { get; set; }
     }
 }

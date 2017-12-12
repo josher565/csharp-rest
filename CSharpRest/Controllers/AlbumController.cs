@@ -34,14 +34,14 @@ namespace CSharpRest.Controllers
         public void Post(AlbumModel album)
         {
             var db = Mapper.Map<Album>(album);
-            AlbumGopher.Create(db);
+            AlbumGopher.Create(db, DateTime.Now);
         }
 
     
         public void Put(AlbumModel album)
         {
             var db = Mapper.Map<Album>(album);
-            AlbumGopher.Update(db);
+            AlbumGopher.Update(db, DateTime.Now);
         }
 
    

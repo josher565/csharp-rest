@@ -27,12 +27,12 @@ namespace CSharpRest.Controllers
 
         public void Post(Artist artist)
         {
-            ArtistGopher.Create(artist);
+            ArtistGopher.Create(artist, DateTime.Now);
         }
 
         public void Put(Artist artist)
         {
-            ArtistGopher.Update(artist);
+            ArtistGopher.Update(artist, DateTime.Now);
         }
 
         public void Delete(Artist artist)

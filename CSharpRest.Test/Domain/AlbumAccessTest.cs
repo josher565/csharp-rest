@@ -37,6 +37,7 @@ namespace CSharpRest.Test.Domain
         public void AlbumAccessCreateTest()
         {
             //Arrange
+            var now = DateTime.Now;
             var mockSet = new Mock<DbSet<Album>>();
             var context = new Mock<AlbumContext>();
             context.SetupGet(m => m.Albums).Returns(mockSet.Object);
@@ -45,7 +46,7 @@ namespace CSharpRest.Test.Domain
             var sutAlbum = new Album() { Id = 14 };
 
             //Act
-            var rAlbum = sut.Create(sutAlbum);
+            var rAlbum = sut.Create(sutAlbum, now);
 
             //Assert
             mockSet.Verify(m => m.Add(sutAlbum), Times.Once());
@@ -55,6 +56,7 @@ namespace CSharpRest.Test.Domain
         public void AlbumAccessUpdateTest()
         {
             //Arrange
+            var now = DateTime.Now;
             var mockSet = new Mock<DbSet<Album>>();
             var context = new Mock<AlbumContext>();
             var album = new Album() { Id = 14 };
@@ -65,7 +67,7 @@ namespace CSharpRest.Test.Domain
 
             //Act
             var sut = new AlbumAccess(context.Object);
-            sut.Update(album);
+            sut.Update(album, now);
 
             //Assert
             Assert.AreEqual(album, mockSet.Object.Attach(album));

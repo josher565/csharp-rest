@@ -14,6 +14,9 @@ namespace CSharpRest.Domain.Contexts
         public ArtistContext() : base("MusicDb") { }
 
         public virtual DbSet<Data.Artist> Artists {get; set;}
+
+        public virtual DbSet<Data.artist_albums> ArtistAlbums { get; set; }
+
         public virtual void SetObjectState(Data.Artist entity, EntityState state)
         {
             Entry(entity).State = state;

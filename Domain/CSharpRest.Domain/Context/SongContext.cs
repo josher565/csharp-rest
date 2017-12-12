@@ -11,7 +11,9 @@ namespace CSharpRest.Domain.Contexts
 {
     public class SongContext : DbContext
     {
-        public SongContext() : base("MusicDb") {}
+        public SongContext() : base("MusicDb") { }
+
+        public virtual DbSet<Data.Album> Albums {get; set;}
 
         public virtual DbSet<Data.Song> Songs { get; set; }
 

@@ -17,7 +17,7 @@ namespace CSharpRest.Domain.Access
 
         public Contexts.SongContext Context { get; set; }
 
-        public Song Create(Song entity)
+        public Song Create(Song entity, DateTime createDate)
         {
             Song rSong = null;
             using (Context)
@@ -47,7 +47,7 @@ namespace CSharpRest.Domain.Access
             return rSong;
         }
 
-        public Song Update(Song entity)
+        public Song Update(Song entity, DateTime createDate)
         {
             Song rSong = null;
             using (Context)

@@ -17,10 +17,11 @@ namespace CSharpRest.Domain.Access
 
         public Contexts.AlbumContext Context { get; set; }
 
-        public Data.Album Create(Album entity)
+        public Data.Album Create(Album entity, DateTime createDate)
         {
             using (Context)
             {
+                entity.Created = createDate;
                 Context.Albums.Add(entity);
                 Context.SaveChanges();
             }
@@ -46,13 +47,13 @@ namespace CSharpRest.Domain.Access
             return rAlbum;
         }
 
-        public Data.Album Update(Album entity)
+        public Data.Album Update(Album entity, DateTime updateDate)
         {
             Album rAlbum = null;
             using (Context)
             {
+                entity.LastModified = updateDate;
                 rAlbum = Context.Albums.Attach(entity);
-                //Context.Entry(entity).State = EntityState.Modified;
                 Context.SetObjectState(entity, EntityState.Modified);
                 Context.SaveChanges();
             }

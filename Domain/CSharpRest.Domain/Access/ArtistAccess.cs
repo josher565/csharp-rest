@@ -17,7 +17,7 @@ namespace CSharpRest.Domain.Access
 
         public Contexts.ArtistContext Context { get; set; }
 
-        public Data.Artist Create(Artist entity)
+        public Data.Artist Create(Artist entity, DateTime createDate)
         {
             Artist rArtist = null;
             using (Context)
@@ -47,7 +47,7 @@ namespace CSharpRest.Domain.Access
             return rArtist;
         }
 
-        public Data.Artist Update(Artist entity)
+        public Data.Artist Update(Artist entity, DateTime updateDate)
         {
             Artist rArtist = null;
             using (var ctx = new Contexts.ArtistContext())
