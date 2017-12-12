@@ -1,82 +1,33 @@
-﻿http://www.dotnettricks.com/learn/entityframework/entity-framework-6-code-first-migrations-with-multiple-data-contexts
-
-
-Start with the AlbumAccess
---------------------------
-
-enable-migrations -ContextTypeName CSharpRest.Domain.DataAccess.AlbumAccess -MigrationsDirectory:Migrations\AlbumContextMigrations
-
-add-migration -configuration CSharpRest.Domain.Migrations.AlbumContextMigrations.Configuration Initial
-
-update-database -configuration CSharpRest.Domain.Migrations.AlbumContextMigrations.Configuration -Verbose
-
-
-Next ArtistAccess
------------------
-
-enable-migrations -ContextTypeName CSharpRest.Domain.DataAccess.ArtistAccess -MigrationsDirectory:Migrations\ArtistContextMigrations
-
-add-migration -configuration CSharpRest.Domain.Migrations.ArtistContextMigrations.Configuration Initial
-
-update-database -configuration CSharpRest.Domain.Migrations.ArtistContextMigrations.Configuration -Verbose
-
-*SetupFirstTime doesn't setup Song as Album has no reference to it
-
-Last SongAccess
-----------------
-
-enable-migrations -ContextTypeName CSharpRest.Domain.DataAccess.SongAccess -MigrationsDirectory:Migrations\SongContextMigrations
-
-add-migration -configuration CSharpRest.Domain.Migrations.SongContextMigrations.Configuration Initial
-
-update-database -configuration CSharpRest.Domain.Migrations.SongContextMigrations.Configuration -Verbose
-
-
-Add some fields to Songs
-------------------------
-
-I added some fields to this model as I just stubbed it to begin with. Need a migration for this
-
-add-migration SongsWithFields -configuration CSharpRest.Domain.Migrations.SongContextMigrations.Configuration
-update-database -configuration CSharpRest.Domain.Migrations.SongContextMigrations.Configuration -Verbose
-
-
-Add Sql Load
-------------
-
-add-migration SqlLoad -configuration CSharpRest.Domain.Migrations.DbMigration.Configuration 
-
-update-database -configuration CSharpRest.Domain.Migrations.DbMigration.Configuration -Verbose
-
-add-migration FinishUp -configuration CSharpRest.Domain.Migrations.DbMigration.Configuration 
-
-
-Redo
-----
+﻿
 ref: 
+http://www.dotnettricks.com/learn/entityframework/entity-framework-6-code-first-migrations-with-multiple-data-contexts
 https://stackoverflow.com/questions/13469881/how-do-i-enable-ef-migrations-for-multiple-contexts-to-separate-databases
 http://www.dotnettricks.com/learn/entityframework/entity-framework-6-code-first-migrations-with-multiple-data-contexts
 https://msdn.microsoft.com/en-us/magazine/dn948104.aspx
 
 
 SETUP
-enable-migrations -ContextTypeName CSharpRest.Domain.Contexts.AlbumContext -MigrationsDirectory:Migrations\AlbumSetup
-add-migration SetupAlbum -configuration CSharpRest.Domain.Migrations.AlbumSetup.Configuration -Verbose
-update-database -configuration CSharpRest.Domain.Migrations.AlbumSetup.Configuration -Verbose
-
-enable-migrations -ContextTypeName CSharpRest.Domain.Contexts.SongContext -MigrationsDirectory:Migrations\ArtistSetup
+enable-migrations -ContextTypeName CSharpRest.Domain.Contexts.ArtistContext -MigrationsDirectory:Migrations\ArtistSetup
+add 'ContextKey = "ArtistModel"' to Configuration constructor
 add-migration SetupArtist -configuration CSharpRest.Domain.Migrations.ArtistSetup.Configuration -Verbose
-NOTE: comment out album stuff here.
-update-database -configuration CSharpRest.Domain.Migrations.ArtistSetup.Configuration
+NOTE: comment out overlapping creations
+
+
+enable-migrations -ContextTypeName CSharpRest.Domain.Contexts.AlbumContext -MigrationsDirectory:Migrations\AlbumSetup
+add 'ContextKey = "AlbumModel"' to Configuration constructor
+add-migration SetupAlbum -configuration CSharpRest.Domain.Migrations.AlbumSetup.Configuration -Verbose
+
 
 enable-migrations -ContextTypeName CSharpRest.Domain.Contexts.SongContext -MigrationsDirectory:Migrations\SongSetup
+add 'ContextKey = "SongModel"' to Configuration constructor
 add-migration SetupSong -configuration CSharpRest.Domain.Migrations.SongSetup.Configuration -Verbose
+NOTE: comment out overlapping creations
+
+
+
+update-database -configuration CSharpRest.Domain.Migrations.ArtistSetup.Configuration
+update-database -configuration CSharpRest.Domain.Migrations.AlbumSetup.Configuration -Verbose
 update-database -configuration CSharpRest.Domain.Migrations.SongSetup.Configuration -Verbose
-
-
-
-
-
 
 
 REFERENCE FOR DELETING PENDING MIGRATION FILE & SOLVING MIGRATION ERROR

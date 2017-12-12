@@ -58,8 +58,22 @@
     <Compile Include="Context\SongContext.cs" />
     <Compile Include="Data\Album.cs" />
     <Compile Include="Data\Artist.cs" />
-    <Compile Include="Data\artist_albums.cs" />
     <Compile Include="Data\BaseModel.cs" />
+    <Compile Include="Migrations\AlbumSetup\201712121927258_SetupAlbum.cs" />
+    <Compile Include="Migrations\AlbumSetup\201712121927258_SetupAlbum.Designer.cs">
+      <DependentUpon>201712121927258_SetupAlbum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\AlbumSetup\Configuration.cs" />
+    <Compile Include="Migrations\ArtistSetup\201712121923137_SetupArtist.cs" />
+    <Compile Include="Migrations\ArtistSetup\201712121923137_SetupArtist.Designer.cs">
+      <DependentUpon>201712121923137_SetupArtist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ArtistSetup\Configuration.cs" />
+    <Compile Include="Migrations\SongSetup\201712121948462_SetupSong.cs" />
+    <Compile Include="Migrations\SongSetup\201712121948462_SetupSong.Designer.cs">
+      <DependentUpon>201712121948462_SetupSong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\SongSetup\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Data\Song.cs" />
   </ItemGroup>
@@ -68,6 +82,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Migrations\MigrationNotes.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\AlbumSetup\201712121927258_SetupAlbum.resx">
+      <DependentUpon>201712121927258_SetupAlbum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ArtistSetup\201712121923137_SetupArtist.resx">
+      <DependentUpon>201712121923137_SetupArtist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\SongSetup\201712121948462_SetupSong.resx">
+      <DependentUpon>201712121948462_SetupSong.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

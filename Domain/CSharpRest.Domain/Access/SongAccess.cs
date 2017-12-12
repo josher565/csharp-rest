@@ -32,7 +32,7 @@ namespace CSharpRest.Domain.Access
         {
             using (Context)
             {
-                Context.Entry(entity).State = System.Data.Entity.EntityState.Deleted;
+                Context.SetObjectState(entity, System.Data.Entity.EntityState.Deleted);
                 Context.SaveChanges();
             }
         }
@@ -53,7 +53,7 @@ namespace CSharpRest.Domain.Access
             using (Context)
             {
                 rSong = Context.Songs.Attach(entity);
-                Context.Entry(entity).State = EntityState.Modified;
+                Context.SetObjectState(entity, System.Data.Entity.EntityState.Modified);
                 Context.SaveChanges();
             }
             return rSong;

@@ -50,11 +50,11 @@ namespace CSharpRest.Domain.Access
         public Data.Artist Update(Artist entity, DateTime updateDate)
         {
             Artist rArtist = null;
-            using (var ctx = new Contexts.ArtistContext())
+            using (Context)
             {
-                rArtist = ctx.Artists.Attach(entity);
+                rArtist = Context.Artists.Attach(entity);
                 Context.SetObjectState(entity, EntityState.Modified);
-                ctx.SaveChanges();
+                Context.SaveChanges();
             }
             return rArtist;
         }
